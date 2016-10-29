@@ -1,1 +1,21 @@
-<h1>Welcome <%= @user.alias %> </h1>
+<div class="col s12"><a class="waves-light btn" href="/bright_ideas">Bright Ideas</a></div>
+<div class="row">
+	<div class="col s12 m6">
+	  <div class="card  blue darken-3">
+	    <div class="card-content white-text">
+	      <h5><span class="card-title">Name: </span><%= @user.name %></h5>
+				<h5><span class="card-title">Alias: </span> <%= @user.alias %></h5>
+				<h5><span class="card-title">Email: </span> <%= @user.email %></h5>
+	    </div>
+	    <div class="white1">
+	    </div>
+	    <div class="card-content white-text">
+	      <h5><span class="card-title">Total Number of Posts: </span><%= @ideas %></h5>
+				<h5><span class="card-title">Total Number Likes: </span> <%= @likes %></h5>
+	    </div>
+	    <div class="card-action">
+	      <a href="/bright_ideas">Bright Ideas</a>
+	    </div>
+	  </div>
+	</div>
+</div>

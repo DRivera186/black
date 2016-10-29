@@ -1,0 +1,28 @@
+<div class="col s12"><a class="waves-light btn" href="/bright_ideas">Bright Ideas</a></div>
+
+
+
+<div class="center2 grey lighten-4 col s12">
+	<p> <%= @ideas.user.name%></a> Says: <%= @ideas.content %></p> </p>
+
+</div>				
+
+
+<table>
+        <thead>
+
+          <tr>
+              <th data-field="id">Alias</th>
+              <th data-field="name">Name</th>
+          </tr>
+        </thead>
+
+        <tbody>
+        <% @users.each do |u|%>
+          <tr>
+            <td> <a href="/users/<%= u.liker %>"><%= u.alias %></a></td>
+            <td><%= u.name %></td>
+          </tr>
+          <%end%>
+        </tbody>
+      </table>

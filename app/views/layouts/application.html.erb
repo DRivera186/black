@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html  class="cyan darken-4 test1">
+<html  class="teal lighten-3">
 <head>
  <title>LogIn</title>
   <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track' => true %>
@@ -23,7 +23,7 @@
 	    <%end%>
 	    <ul class="right hide-on-med-and-down">
 	     <!-- Dropdown Trigger -->
-	      	<li><a class="dropdown-button" href="#!" data-activates="dropdown1">Menu<i class="material-icons right">arrow_drop_down</i></a></li>
+	
 	      	<% if current_user %>
 	     	<li><form method="post" action="/sessions/logout">
 	       	<input type="hidden" name="authenticity_token" value="<%= form_authenticity_token %>">	

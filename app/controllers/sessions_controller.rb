@@ -1,7 +1,8 @@
 class SessionsController < ApplicationController
 
 
-  def new
+  def index
+  	
   end
 
   def login

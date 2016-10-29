@@ -1,0 +1,49 @@
+<h1>Hi <%= @user.alias %>!</h1> 
+
+<div class="center2 grey lighten-4 col s12">
+<form action="/post/<%= current_user.id %>" method="post">
+	<input type="hidden" name="authenticity_token" value="<%= form_authenticity_token %>">
+		<div class="row">
+	    <div class="input-field col s12">
+	    	<label for="content">Post Something Here!</label>
+	      <textarea name="content" id="content" class="materialize-textarea"></textarea>
+	      <input class="waves-light btn" type="submit" value="Post" >
+	    </div>
+	   </div>
+	</form>
+</div>
+
+<% @ideas.sort_by{|like| -like.likes.count}.each do |idea|%>
+<div class="center2 grey lighten-4 col s12">
+
+		<% if idea.user == current_user %>
+		<form action="/post_delete/<%=idea.id%>" method="post">
+			<input type="hidden" name="_method" value="delete">
+			<input type="hidden" name="authenticity_token" value="<%= form_authenticity_token %>">
+			<div class="row">
+			  <div class="input-field col s12">
+			    <input class="waves-light btn" type="submit" value="delete" >
+			  </div>
+			</div>
+		</form>
+		<%end%>
+	<p><a href="/users/<%= idea.user.id %> "><%= idea.user.name%></a> Says <%= idea.content %></p>
+		<% if idea.users_liked.include?(current_user) %>
+			<P>already liked</P>
+		<%else%>
+		<form action="/like/<%= current_user.id %>" method="post">
+			<input type="hidden" name="authenticity_token" value="<%= form_authenticity_token %>">
+			<div class="row">
+			  <div class="input-field col s12">
+			    <input type="hidden" id="like"  name="like" value="<%= idea.id %>">
+			    <input class="waves-light btn" type="submit" value="Like" >
+			  </div>
+			</div>
+		</form>
+		<%end%>
+		<p> <a href="/bright_ideas/<%= idea.id %>"> <%= idea.likes.count %> people liked </a> this idea</p>
+</div>				
+<%end%>
+
+
+		

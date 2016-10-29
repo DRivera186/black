@@ -1,11 +1,18 @@
 Rails.application.routes.draw do
   root 'sessions#new'
-
-  get "users/home" => "sessions#new"
+  
   get "users/new" => "users#new"
-  post "users/register" => "users#create"
   get "users/:id" => "users#show"
+  get "bright_ideas/:id" => "ideas#index"
+  get "users/home" => "sessions#new"
+  
+  post "users/register" => "users#create"
+  
+  get "bright_ideas" => "users#index"
   post "sessions/signin" => "sessions#login"
+  post "post/:id" => "ideas#create"
+  post "like/:id" => "likes#create"
+  delete "post_delete/:id" => "ideas#destroy"
   delete "sessions/logout" => "sessions#destroy"
 
 

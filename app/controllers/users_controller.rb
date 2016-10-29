@@ -1,9 +1,12 @@
 class UsersController < ApplicationController
 	before_action :current_user, only:[:edit, :update, :delete_user]
   before_action :require_login, except: [:new, :create]
-  before_action :require_correct_user, only: [:show, :edit, :update, :destroy]
+  before_action :require_correct_user, only: [:edit, :update, :destroy]
 
   def index
+  	@user = User.find(current_user.id)
+  	@users = User.all
+  	@ideas = Idea.all
   end
 
   def new
@@ -18,11 +21,13 @@ class UsersController < ApplicationController
   		flash[:errors] = user.errors.full_messages
   	 	redirect_to :back
 	 end
-
   end
 
 	def show
-	    @user = User.find(current_user.id)
+
+	    @user = User.find(params[:id])
+	    @ideas = @user.ideas.count
+	    @likes = @user.likes.count
 	 end
 
 

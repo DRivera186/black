@@ -1,2 +1,26 @@
-<h1>Users#new</h1>
-<p>Find me in app/views/users/new.html.erb</p>
+<div class="center1 grey lighten-4">
+<h3 class="center-align titles">New User</h3>
+	<span class="span1"><% if flash[:errors] %>
+		<% flash[:errors].each do |error| %>
+			<p class="error"> * <%=error%></p>
+		<% end %>
+	<% end %>
+	</span>
+<div>
+	<form action="/users/register" method="post">
+		<input type="hidden" name="authenticity_token" value="<%= form_authenticity_token %>">
+		<label for="Name">Name</label>
+		<input id="Name" type="text" name="user[name]">
+		<label for="Alias">Alias</label>
+		<input id="Alias" type="text" name="user[alias]">
+		<label for="email">Email</label>
+		<input id="Email" type="text" name="user[email]">
+		<label for="Password">Password</label>
+		<input id="Password" type="password" name="user[password]">
+		<label for="passConfirm">Password Confirmation</label>
+		<input id="passConfirm" type="password" name="password_confirmation">
+		<input class="btn waves-light right1" type="submit" value="Join" >
+	</form>
+	<h5><a href="/sessions/login" class="title5">Already a member?</a></h5>
+</div>
+</div>
